@@ -1,0 +1,44 @@
+package com.mingi.inquiry.domain.contact_us.service;
+
+import com.mingi.inquiry.domain.contact_us.dto.ContactRequestDto;
+import com.mingi.inquiry.domain.contact_us.entity.Contact;
+import com.mingi.inquiry.domain.contact_us.repository.ContactRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Transactional
+@Service
+public class ContactService {
+
+    private final ContactRepository contactRepository;
+
+    public List findAll(){
+        return contactRepository.findAll();
+    }
+    public Contact join(Contact contact){
+        return contactRepository.save(contact);
+    }
+
+    @Autowired
+    public ContactService(ContactRepository contactRepository){
+        this.contactRepository = contactRepository;
+    }
+    public void createContact(ContactRequestDto dto) {
+        contactRepository.save(Contact.builder()
+                .title(dto.getTitle())
+                .content(dto.getContent())
+                .teacher(dto.getTeacher())
+                .build());
+    }
+
+//    @GetMapping("/api/contact/{title}")
+//    public List<Contact> listContact(@PathVariable String title){
+//        return contactRepository.findAllBy();
+//    }
+}

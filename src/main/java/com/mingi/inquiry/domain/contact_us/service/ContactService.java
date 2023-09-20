@@ -3,11 +3,8 @@ package com.mingi.inquiry.domain.contact_us.service;
 import com.mingi.inquiry.domain.contact_us.dto.ContactRequestDto;
 import com.mingi.inquiry.domain.contact_us.entity.Contact;
 import com.mingi.inquiry.domain.contact_us.repository.ContactRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -21,7 +18,7 @@ public class ContactService {
     public List findAll(){
         return contactRepository.findAll();
     }
-    public Contact join(Contact contact){
+    public Contact Create(Contact contact){
         return contactRepository.save(contact);
     }
 
@@ -29,6 +26,7 @@ public class ContactService {
     public ContactService(ContactRepository contactRepository){
         this.contactRepository = contactRepository;
     }
+
     public void createContact(ContactRequestDto dto) {
         contactRepository.save(Contact.builder()
                 .title(dto.getTitle())

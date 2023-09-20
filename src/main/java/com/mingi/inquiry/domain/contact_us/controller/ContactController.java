@@ -1,6 +1,5 @@
 package com.mingi.inquiry.domain.contact_us.controller;
 
-import com.mingi.inquiry.domain.contact_us.dto.ContactRequestDto;
 import com.mingi.inquiry.domain.contact_us.entity.Contact;
 import com.mingi.inquiry.domain.contact_us.service.ContactService;
 import lombok.RequiredArgsConstructor;
@@ -12,15 +11,10 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-//@RequestMapping("/contact")
+//@RequestMapping("/contact") //담당자 문의
 public class ContactController {
 
     private final ContactService contactService;
-
-    @GetMapping("/")
-    public String hello() {
-        return "hello";
-    }
 
     @GetMapping("/contacts")
     public ResponseEntity<?> contacts() {
@@ -29,8 +23,8 @@ public class ContactController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> joinContact(@RequestBody Contact contact){
-        contactService.join(contact);
+    public ResponseEntity<?> createContact(@RequestBody Contact contact){
+        contactService.Create(contact);
         return new ResponseEntity<>(contact, HttpStatus.OK);
     }
 

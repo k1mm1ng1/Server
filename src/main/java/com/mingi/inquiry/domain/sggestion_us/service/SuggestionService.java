@@ -20,7 +20,7 @@ public class SuggestionService {
         return suggestionRepository.findAll();
     }
 
-    public Suggestion Create(Suggestion suggestion) {
+    public Suggestion create(Suggestion suggestion) {
         return suggestionRepository.save(suggestion);
     }
 

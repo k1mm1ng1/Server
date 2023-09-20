@@ -20,13 +20,10 @@ public class Contact {
     private String title;
     @Column(nullable = false)
     private String content;
-    @Column(nullable = false)
-    private String teacher;
 
     public Contact(ContactRequestDto contactRequestDto){
         this.title = contactRequestDto.getTitle();
         this.content = contactRequestDto.getContent();
-        this.teacher = contactRequestDto.getTeacher();
 
     }
 

@@ -18,7 +18,4 @@ public class ContactRequestDto {
     @Column(nullable = false)
     @NotBlank(message = "콘텐츠가 널일 수 없습니다.")
     private String content;
-    @Column(nullable = false)
-    @NotBlank(message = "티처가 널일 수 없습니다.")
-    private String teacher;
 }

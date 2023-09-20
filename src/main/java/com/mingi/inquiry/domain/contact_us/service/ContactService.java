@@ -31,7 +31,6 @@ public class ContactService {
         contactRepository.save(Contact.builder()
                 .title(dto.getTitle())
                 .content(dto.getContent())
-                .teacher(dto.getTeacher())
                 .build());
     }
 
